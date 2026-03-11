@@ -47,15 +47,15 @@ input.addEventListener("change", async () => {
     if (!file)
         return;
     originalFileName = file.name.replace(/\.[^/.]+$/, "") + ".cbz";
-    btn.textContent = "Converting...";
+    btn.innerText = "Converting...";
     btn.disabled = true;
     try {
         resultBlob = await pdfToCbz(file);
-        btn.textContent = `Download ${originalFileName}`;
+        btn.innerText = `Download ${originalFileName}`;
         btn.disabled = false;
     }
     catch (e) {
-        btn.textContent = "Error Converting";
+        btn.innerText = "Error Converting, see console";
         console.error(e);
     }
 });

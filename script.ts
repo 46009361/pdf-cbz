@@ -50,6 +50,8 @@ async function pdfToCbz(file: File): Promise<Blob> {
 
         page.cleanup();
     }
+    (canvas as any).width = 0; 
+    (canvas as any).height = 0;
 
     const result: Blob = await zip.generateAsync({ type: "blob" });
     await pdf.destroy();

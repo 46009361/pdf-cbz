@@ -11,11 +11,17 @@
                 }
             }
         </script>
+        <link rel="stylesheet" href="style.css">
+        <meta name="viewport" content="width=device-width">
     </head>
     <body>
-        <label>Upload a PDF:<input type="file" id="picker" accept="application/pdf"></label>
-        <button id="btn" disabled>Download CBZ</button>
-        
+        <form>
+            <label for="picker">Upload a PDF</label>
+            <br>
+            <input type="file" id="picker" accept="application/pdf">
+            <br>
+            <button id="btn" type="button" disabled>Download CBZ</button>
+        </form>
         <script type="module" src="./script.js"></script>
     </body>
 </html>

@@ -1,0 +1,12 @@
+{
+  "type": "module",
+  "dependencies": {
+    "jszip": "^3.10.1",
+    "pdfjs-dist": "^5.5.207",
+    "tsc": "^2.0.4"
+  },
+  "devDependencies": {
+    "@types/node": "^25.4.0",
+    "typescript": "^5.9.3"
+  }
+}

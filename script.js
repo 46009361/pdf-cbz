@@ -1,11 +1,15 @@
 import * as pdfjs from "pdfjs-dist";
 import * as _JSZip from "jszip";
 pdfjs.GlobalWorkerOptions.workerSrc = "./pdf.worker.min.mjs";
+// ... inside pdfToCbz ...
 async function pdfToCbz(file) {
     const pdf = await pdfjs.getDocument(await file.arrayBuffer()).promise;
-    const zip = new _JSZip();
+    // Access JSZip from the window object to bypass ESM constructor issues
+    const zip = new window.JSZip();
+    // ... rest of your loop ...
     const canvas = document.createElement("canvas");
     const ctx = canvas.getContext("2d");
+    // ... rest of your code ...
     const magnitude = Math.floor(Math.log10(pdf.numPages)) + 1; // order of magnitude
     for (let i = 1; i <= pdf.numPages; i++) {
         const page = await pdf.getPage(i);

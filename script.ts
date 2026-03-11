@@ -1,6 +1,7 @@
 import * as pdfjs from "pdfjs-dist";
 import type { PDFDocumentProxy, PDFPageProxy } from "pdfjs-dist";
 import * as _JSZip from "jszip";
+// REMOVE: import * as _JSZip from "jszip";
 import type JSZipType from "jszip";
 
 type PageViewport = ReturnType<PDFPageProxy["getViewport"]>;
@@ -13,11 +14,18 @@ interface RenderParameters {
 
 pdfjs.GlobalWorkerOptions.workerSrc = "./pdf.worker.min.mjs";
 
+// ... inside pdfToCbz ...
+
 async function pdfToCbz(file: File): Promise<Blob> {
     const pdf: PDFDocumentProxy = await pdfjs.getDocument(await file.arrayBuffer()).promise;
-    const zip: JSZipType = new (_JSZip as any)();
+
+    // Access JSZip from the window object to bypass ESM constructor issues
+    const zip: JSZipType = new (window as any).JSZip();
+    
+    // ... rest of your loop ...
     const canvas: HTMLCanvasElement = document.createElement("canvas");
     const ctx: CanvasRenderingContext2D = canvas.getContext("2d")!;
+    // ... rest of your code ...
     const magnitude: number = Math.floor(Math.log10(pdf.numPages)) + 1; // order of magnitude
 
     for (let i: number = 1; i <= pdf.numPages; i++) {

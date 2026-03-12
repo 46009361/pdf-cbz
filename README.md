@@ -2,7 +2,7 @@
 Offline PDF to CBZ (Comic Book Zip) converter, completely web based.
 
 > [!NOTE]
-> Make sure your cache is enabled. After you last load the page, you need to have converted at least one file online before going offline. This means loading → going offline → converting doesn't work. I don't know why.
+> Make sure your cache is enabled. After you last load the page, you need to have converted at least one file online before going offline. This means loading → going offline → converting doesn't work; it has to be **loading → converting → JS files caching → going offline → converting again**. I don't know why.
 
 Say you've always had this problem where you download a book and it is a long line of pages to scroll through. You may be able to split it up into two-page view in your normal PDF viewer, or you may not. Now, you can upload the book here and it works fine in your comic reader (e.g. Calibre)!
 

@@ -2,6 +2,11 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+form {
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
 #picker {
     /* Styles within this block use AI */
     /* Visually hides the input but keeps it accessible to screen readers */

@@ -9,17 +9,17 @@ Say you've always had this problem where you download a book and it is a long li
 Fun fact, for those who don't have a comic reader: Did you know Proton Drive supports comic books on both desktop and mobile web? They did that when [someone asked for it](https://www.reddit.com/r/ProtonDrive/comments/1gvfr4q/comment/m0d15yv/).
 
 ## Running locally
-```sh
+```zsh
 git clone https://github.com/46009361/pdf-cbz.git
 cd ~/pdf-cbz
 ```
 Next steps are below.
 ### Python example (for localhost:8080)
-```sh
+```zsh
 python -m http.server 8080
 ```
 ### Node.js example (for localhost:3000)
-```sh
+```zsh
 npm install serve # if you haven't already
 npm serve . -p 3000
 ```

@@ -56,7 +56,7 @@ async function pdfToCbz(file: File): Promise<Blob> {
     (canvas as any).width = 0; 
     (canvas as any).height = 0;
 
-    const result: Blob = await zip.generateAsync({ type: "blob" });
+    const result: Blob = await zip.generateAsync({ type: "blob", mimeType: "application/vnd.comicbook+zip" });
     await pdf.destroy();
     return result;
 }

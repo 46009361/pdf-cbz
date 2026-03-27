@@ -28,7 +28,7 @@ async function pdfToCbz(file) {
     }
     canvas.width = 0;
     canvas.height = 0;
-    const result = await zip.generateAsync({ type: "blob" });
+    const result = await zip.generateAsync({ type: "blob", mimeType: "application/vnd.comicbook+zip" });
     await pdf.destroy();
     return result;
 }

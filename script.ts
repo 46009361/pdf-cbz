@@ -90,6 +90,7 @@ input.addEventListener("change", async () => {
     } catch (e) {
         btn.textContent = "Error Converting";
         console.error(e);
+        prompt("Copy error:", e as string);
     }
 });
 

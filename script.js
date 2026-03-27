@@ -26,6 +26,8 @@ async function pdfToCbz(file) {
         zip.file(`${i.toString().padStart(magnitude, "0")}.jpg`, blob);
         page.cleanup();
     }
+    canvas.width = 0;
+    canvas.height = 0;
     const result = await zip.generateAsync({ type: "blob" });
     await pdf.destroy();
     return result;
@@ -47,16 +49,17 @@ input.addEventListener("change", async () => {
     if (!file)
         return;
     originalFileName = file.name.replace(/\.[^/.]+$/, "") + ".cbz";
-    btn.innerText = "Converting...";
+    btn.textContent = "Converting...";
     btn.disabled = true;
     try {
         resultBlob = await pdfToCbz(file);
-        btn.innerText = `Download ${originalFileName}`;
+        btn.textContent = `Download ${originalFileName}`;
         btn.disabled = false;
     }
     catch (e) {
-        btn.innerText = "Error Converting, see console";
+        btn.textContent = "Error Converting";
         console.error(e);
+        prompt("Copy error:", e);
     }
 });
 btn.addEventListener("click", () => {

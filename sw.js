@@ -1,12 +1,12 @@
 const CACHE = "pdf-cbz-v1";
 const PRECACHE = [
-  "/",
-  "/index.html",
-  "/style.css",
-  "/script.js",
-  "/node_modules/pdfjs-dist/build/pdf.mjs",
-  "/node_modules/pdfjs-dist/build/pdf.worker.min.mjs",
-  "/node_modules/jszip/dist/jszip.min.js",
+  "/pdf-cbz/",
+  "/pdf-cbz/index.html",
+  "/pdf-cbz/style.css",
+  "/pdf-cbz/script.js",
+  "/pdf-cbz/node_modules/pdfjs-dist/build/pdf.mjs",
+  "/pdf-cbz/node_modules/pdfjs-dist/build/pdf.worker.min.mjs",
+  "/pdf-cbz/node_modules/jszip/dist/jszip.min.js",
 ];
 
 self.addEventListener("install", (e) => {

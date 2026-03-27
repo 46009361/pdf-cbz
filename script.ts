@@ -12,7 +12,10 @@ interface RenderParameters {
 
 }
 
-pdfjs.GlobalWorkerOptions.workerSrc = "./pdf.worker.min.mjs";
+pdfjs.GlobalWorkerOptions.workerSrc = new URL(
+    "./node_modules/pdfjs-dist/build/pdf.worker.min.mjs",
+    import.meta.url
+).href;
 
 // ... inside pdfToCbz ...
 

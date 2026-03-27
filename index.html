@@ -3,6 +3,11 @@
     <head>
         <title>PDF-to-CBZ Converter</title>
         <meta name="description" content="Useful for Proton Drive!">
+        <script>
+            if ("serviceWorker" in navigator) {
+                navigator.serviceWorker.register("/sw.js");
+            }
+        </script>
         <script type="importmap">
             {
                 "imports": {

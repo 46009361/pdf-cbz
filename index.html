@@ -3,21 +3,20 @@
     <head>
         <title>PDF-to-CBZ Converter</title>
         <meta name="description" content="Useful for Proton Drive!">
-        <script>
-            if ("serviceWorker" in navigator) {
-                navigator.serviceWorker.register("/sw.js");
-            }
-        </script>
         <script type="importmap">
             {
                 "imports": {
-                    "pdfjs-dist": "./node_modules/pdfjs-dist/build/pdf.mjs",
-                    "jszip": "./node_modules/jszip/dist/jszip.min.js"
+                    "pdfjs-dist": "./node_modules/pdfjs-dist/build/pdf.mjs"
                 }
             }
         </script>
         <link rel="stylesheet" href="style.css">
         <meta name="viewport" content="width=device-width">
+        <script>
+            if ("serviceWorker" in navigator) {
+                navigator.serviceWorker.register("/pdf-cbz/sw.js");
+            }
+        </script>
     </head>
     <body>
         <form>

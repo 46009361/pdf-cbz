@@ -1,16 +1,11 @@
 import * as pdfjs from "pdfjs-dist";
-import * as _JSZip from "jszip";
 pdfjs.GlobalWorkerOptions.workerSrc = new URL("./node_modules/pdfjs-dist/build/pdf.worker.min.mjs", import.meta.url).href;
-// ... inside pdfToCbz ...
 async function pdfToCbz(file) {
     const pdf = await pdfjs.getDocument(await file.arrayBuffer()).promise;
-    // Access JSZip from the window object to bypass ESM constructor issues
     const zip = new window.JSZip();
-    // ... rest of your loop ...
     const canvas = document.createElement("canvas");
     const ctx = canvas.getContext("2d");
-    // ... rest of your code ...
-    const magnitude = Math.floor(Math.log10(pdf.numPages)) + 1; // order of magnitude
+    const magnitude = Math.floor(Math.log10(pdf.numPages)) + 1;
     for (let i = 1; i <= pdf.numPages; i++) {
         const page = await pdf.getPage(i);
         const viewport = page.getViewport({ scale: 1.5 });
@@ -32,14 +27,6 @@ async function pdfToCbz(file) {
     await pdf.destroy();
     return result;
 }
-function downloadCbz(blob, filename) {
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = filename.endsWith(".cbz") ? filename : `${filename}.cbz`;
-    link.click();
-    URL.revokeObjectURL(url);
-}
 let resultBlob = null;
 let originalFileName = "comic.cbz";
 const input = document.getElementById("picker");
@@ -59,17 +46,13 @@ input.addEventListener("change", async () => {
     catch (e) {
         btn.textContent = "Error Converting";
         console.error(e);
-        prompt("Copy error:", e);
     }
 });
-btn.addEventListener("click", () => {
+btn.addEventListener("click", async () => {
     if (!resultBlob)
         return;
-    const url = URL.createObjectURL(resultBlob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = originalFileName;
-    a.click();
-    URL.revokeObjectURL(url);
+    const sw = await navigator.serviceWorker.ready;
+    sw.active.postMessage({ filename: originalFileName, blob: resultBlob });
+    window.location.href = "/pdf-cbz/download/" + originalFileName;
 });
 //# sourceMappingURL=script.js.map
